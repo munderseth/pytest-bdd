@@ -19,7 +19,9 @@ install:
 
 script: 
   - tox -e $TESTENV --recreate
-  - testspace [$TESTENV].tox/$TESTENV/log/junit*.xml{tests}
+  - testspace [$TESTENV].tox/$TESTENV/log/junit*.xml
+
+  #- testspace [$TESTENV].tox/$TESTENV/log/junit*.xml{tests}
 
 #branches:
 #  except:
