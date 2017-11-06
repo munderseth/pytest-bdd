@@ -3,12 +3,12 @@ language: python
 python: "3.4"
 env:
   matrix:
-    - TESTENV=linters
+#    - TESTENV=linters
     - TESTENV=py27
 #    - TESTENV=py27-xdist
     - TESTENV=py27-pytest-latest
     - TESTENV=py34
-    - TESTENV=coveralls
+#    - TESTENV=coveralls
 before_install:
   - mkdir -p $HOME/bin
   - curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
@@ -19,7 +19,7 @@ install:
 
 script: 
   - tox -e $TESTENV --recreate
-  - testspace requirements-testing.txt
+  - testspace [$TESTENV].tox/$TESTENV/log/junit*.xml{tests}
 
 #branches:
 #  except:
